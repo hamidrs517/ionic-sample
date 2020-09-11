@@ -1,0 +1,14 @@
+{
+  "appId": "io.ionic.demo.pg.cap.ng",
+  "appName": "Photo Gallery Cap Ng",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {},
+  "server": {
+    "url": "http://192.168.137.1:8100",
+    "cleartext": true,
+    "originalUrl": "http://192.168.1.103:8100",
+    "originalCleartext": true
+  }
+}

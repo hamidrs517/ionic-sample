@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>platform</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+
+  <ion-item-group dir="rtl">
+    <ion-item-divider>
+      <ion-label>ویژگی ها</ion-label>
+    </ion-item-divider>
+
+    <ion-item>
+      <ion-label>isRTL : {{isRTL}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>isLandscape : {{isLandscape}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>isPortrait : {{isPortrait}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>current url : {{url}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label> width : {{width}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label> height : {{height}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label> readySource : {{readySource}}</ion-label>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>پلتفرم های ممکن</ion-label>
+    </ion-item-divider>
+
+    <ion-item *ngFor="let plat of platformsArray">
+      <ion-label>{{plat}}</ion-label>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>وضعیت</ion-label>
+    </ion-item-divider>
+
+    <ion-item>
+      <ion-label>{{pause}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{resume}}</ion-label>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

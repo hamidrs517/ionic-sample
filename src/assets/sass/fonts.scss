@@ -1,0 +1,8 @@
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@charset "UTF-8";
+@import url("assets/fonts/vazir.css");
+
+:root, :root[mode="md"], :root[mode="ios"] {
+  --ion-font-family: 'primary-font', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif !important;
+  font-family: var(--ion-font-family) !important;
+}
