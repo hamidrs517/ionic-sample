@@ -55,8 +55,8 @@ export class Tab4Page {
         console.log(uri);
 
         this.filePath.resolveNativePath(uri).then(filePath => {
-          console.log("res", filePath);
-          let convertedFileSrc = Capacitor.convertFileSrc(filePath)
+          console.log("res", filePath); // file://
+          let convertedFileSrc = Capacitor.convertFileSrc(filePath) // http://
           // this.photos.push(convertedFileSrc);
 
           this.file.resolveLocalFilesystemUrl(filePath).then(fileInfo => {

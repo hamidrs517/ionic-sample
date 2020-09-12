@@ -34,7 +34,7 @@ export class PhotoService {
         // Read each saved photo's data from the Filesystem
         const readFile = await Filesystem.readFile({
           path: photo.filepath,
-          directory: FilesystemDirectory.Data
+          directory: FilesystemDirectory.ExternalStorage
         });
 
         // Web platform only: Save the photo into the base64 field
@@ -53,14 +53,33 @@ export class PhotoService {
   // https://capacitor.ionicframework.com/docs/apis/storage
   */
   public async addNewToGallery() {
-    // Take a photo
+    // Take a photo from gallery or camera
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri, // file-based data; provides best performance
-      source: CameraSource.Camera, // automatically take a new photo with the camera
+      source: CameraSource.Prompt, // automatically take a new photo with the camera
       quality: 100,// highest quality (0 to 100)
       saveToGallery: true
     });
-
+    console.warn("capturedPhoto", JSON.stringify(capturedPhoto))
+    //  example capturedPhoto object
+    //   {
+    //     "format": "jpeg",
+    //       "exif": {
+    //                 "ApertureValue": "169/100",
+    //                 "DateTime": "2020:09:12 14:14:44",
+    //                 "ExposureTime": "0.08",
+    //                 "Flash": "0",
+    //                 "FocalLength": "3640/1000",
+    //                 "ImageLength": "4160",
+    //                 "ImageWidth": "3120",
+    //                 "Make": "HUAWEI",
+    //                 "Model": "JKM-LX1",
+    //                 "Orientation": "0",
+    //                 "WhiteBalance": "0"
+    //     },
+    //     "path": "file:///data/user/0/io.ionic.demo.pg.cap.ng/cache/JPEG_20200912_141439_3424474639232180273.jpg",
+    //     "webPath": "http://192.168.137.1:8100/_capacitor_file_/data/user/0/io.ionic.demo.pg.cap.ng/cache/JPEG_20200912_141439_3424474639232180273.jpg"
+    //   }
     const savedImageFile = await this.savePicture(capturedPhoto);
 
     // Add new photo to Photos array
@@ -92,7 +111,7 @@ export class PhotoService {
     const savedFile = await Filesystem.writeFile({
       path: fileName,
       data: base64Data,
-      directory: FilesystemDirectory.Data
+      directory: FilesystemDirectory.ExternalStorage
     });
 
     if (this.platform.is('hybrid')) {
@@ -118,13 +137,17 @@ export class PhotoService {
     // "hybrid" will detect Cordova or Capacitor
     if (this.platform.is('hybrid')) {
       // Read the file into base64 format
+      console.log("is hybrid(Cordova or Capacitor)")
       const file = await Filesystem.readFile({
-        path: cameraPhoto.path
+        path: cameraPhoto.path // file://
       });
 
       return file.data;
     }
     else {
+      console.log("is not hybrid(Cordova or Capacitor)")
+      console.log("cameraPhoto.webPath!", cameraPhoto.webPath!)
+
       // Fetch the photo, read as a blob, then convert to base64 format
       const response = await fetch(cameraPhoto.webPath!);
       const blob = await response.blob();
@@ -148,7 +171,7 @@ export class PhotoService {
     const filename = photo.filepath.substr(photo.filepath.lastIndexOf('/') + 1);
     await Filesystem.deleteFile({
       path: filename,
-      directory: FilesystemDirectory.Data
+      directory: FilesystemDirectory.ExternalStorage
     });
   }
 
