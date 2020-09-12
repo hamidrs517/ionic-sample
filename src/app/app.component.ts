@@ -31,19 +31,25 @@ export class AppComponent implements OnInit {
     {
       title: 'refresher',
       url: '/refresher',
-      icon: 'refresher',
+      icon: 'help-circle',
       loggedIn: true,
     },
     {
       title: 'network',
       url: '/network',
-      icon: 'network',
+      icon: 'earth',
       loggedIn: true,
     },
     {
       title: 'platform',
       url: '/platform',
-      icon: 'platform',
+      icon: 'file-tray',
+      loggedIn: false,
+    },
+    {
+      title: 'file-system',
+      url: '/file-system',
+      icon: 'file-tray',
       loggedIn: false,
     },
     {

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>file-system</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-header>
+    ذخیره در فایل متنی
+  </ion-card-header>
+  <ion-card>
+    <ion-card-content>
+      <ion-grid *ngIf="platform.is('android');else incompatiblePlatform">
+        <ion-row class="ion-align-items-center">
+          <ion-col>
+            <ion-item>
+              <ion-label style="align-self: flex-start;" position="stacked" color="primary">عنوان</ion-label>
+              <ion-input type="text" [(ngModel)]="title" required> </ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+
+              <ion-label style="align-self: flex-start;" position="stacked" color="primary">متن</ion-label>
+              <ion-textarea autoGrow="true" [(ngModel)]="txtArea" required> </ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-fab-button (click)="fileWrite()" [disabled]="txtArea.length<1 && title.length<1">
+            ذخیره
+          </ion-fab-button>
+        </ion-row>
+
+      </ion-grid>
+      <ng-template #incompatiblePlatform>
+        <ion-text color="danger">
+          <h4>این قابلیت فقط در نسخه اندروید موجود است</h4>
+        </ion-text>
+
+      </ng-template>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

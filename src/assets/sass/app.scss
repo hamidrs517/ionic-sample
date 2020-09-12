@@ -55,3 +55,10 @@ ion-avatar {
     bottom: 0;
   }
 }
+
+ion-toast{
+  .success-opration{
+    --background: #17aa48;
+    --color:#ffffff;
+}
+}

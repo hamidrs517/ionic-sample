@@ -27,11 +27,17 @@ const routes: Routes = [
     loadChildren: () => import('./pages/platform/platform.module').then(m => m.PlatformPageModule)
   },
   {
+    path: 'file-system',
+    loadChildren: () => import('./pages/file-system/file-system.module').then(m => m.FileSystemPageModule)
+  },
+  {
     path: 'signup',
     loadChildren: () => import('./pages/auth/signup/signup.module').then(m => m.SignUpModule),
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
+
+
 
 
 
