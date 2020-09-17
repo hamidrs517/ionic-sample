@@ -53,6 +53,30 @@ export class AppComponent implements OnInit {
       loggedIn: false,
     },
     {
+      title: 'آپلود',
+      url: '/upload',
+      icon: 'upload',
+      loggedIn: false,
+    },
+    {
+      title: 'database',
+      url: '/database',
+      icon: 'archive',
+      loggedIn: false,
+    },
+    {
+      title: 'song',
+      url: '/song',
+      icon: 'play-circle',
+      loggedIn: false,
+    },
+    {
+      title: 'sensors',
+      url: '/sensors',
+      icon: 'pulse',
+      loggedIn: false,
+    },
+    {
       title: 'Speakers',
       url: '/app/tabs/speakers',
       icon: 'people',

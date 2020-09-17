@@ -34,11 +34,28 @@ const routes: Routes = [
     path: 'signup',
     loadChildren: () => import('./pages/auth/signup/signup.module').then(m => m.SignUpModule),
   },
+  {
+    path: 'upload',
+    loadChildren: () => import('./pages/upload/upload.module').then(m => m.UploadPageModule)
+  },
+  {
+    path: 'database',
+    loadChildren: () => import('./pages/database/database.module').then(m => m.DatabasePageModule)
+  },
+  {
+    path: 'song',
+    loadChildren: () => import('./pages/song/song-list/song-list.page.module').then(m => m.SongListPageModule)
+  },
+  {
+    path: 'song/:id',
+    loadChildren: () => import('./pages/song/song/song.module').then(m => m.SongPageModule)
+  },
+  {
+    path: 'sensors',
+    loadChildren: () => import('./pages/sensors/sensors.module').then(m => m.SensorsPageModule)
+  },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
-
-
-
 
 
 
