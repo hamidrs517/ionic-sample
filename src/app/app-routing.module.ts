@@ -54,11 +54,12 @@ const routes: Routes = [
     path: 'sensors',
     loadChildren: () => import('./pages/sensors/sensors.module').then(m => m.SensorsPageModule)
   },
+  {
+    path: 'geo-location',
+    loadChildren: () => import('./pages/geo-location/geo-location.module').then(m => m.GeoLocationPageModule)
+  },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
-
-
-
 
 
   // {
