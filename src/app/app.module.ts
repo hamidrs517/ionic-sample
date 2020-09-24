@@ -14,7 +14,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
-
+import { BackgroundMode } from '@ionic-native/background-mode/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -28,6 +30,7 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
+
   ],
   providers: [
     StatusBar,
@@ -36,6 +39,9 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
     // SQLite
     SQLite,
     SQLitePorter,
+    BackgroundMode,
+    Geolocation,
+    LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
   ],
