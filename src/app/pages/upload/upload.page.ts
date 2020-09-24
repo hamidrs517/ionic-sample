@@ -1,6 +1,7 @@
 import { HttpClient, HttpEvent, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ToastService } from 'src/app/services/toast.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-upload',
@@ -10,9 +11,9 @@ import { ToastService } from 'src/app/services/toast.service';
 export class UploadPage implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
   file
-  token = localStorage.getItem('utch_token')
+  token = localStorage.getItem('token')
   title = ''
-  host: string = "https://test.ir/"
+  url: string = `${environment.api_url}/upload`
   percent = "0";
   value = 0
 
@@ -37,7 +38,7 @@ export class UploadPage implements OnInit {
 
   upload() {
 
-    this.uploadFile(this.host, [], this.file)
+    this.uploadFile(this.url, [], this.file)
   }
 
   fileChangeEvent(event: any) {
@@ -49,17 +50,17 @@ export class UploadPage implements OnInit {
     // const img = files[0];
     const formData = new FormData();
     formData.append('file', this.file);
-    formData.append('title', this.title);
-    const accessToken = localStorage.getItem('utch_token');
+    // formData.append('title', this.title);
+    const accessToken = this.token
 
     return this.http.post(url, formData, {
       headers: new HttpHeaders({
-        'Authorization': `Bearer ${accessToken}`
+        // 'Authorization': `Bearer ${accessToken}`
       }),
       observe: 'events',
       reportProgress: true
     }).subscribe((event: HttpEvent<any>) => {
-      console.warn("event", event)
+      console.warn("event", JSON.stringify(event))
       switch (event.type) {
         case HttpEventType.Sent:
           console.log('Request has been made!');
@@ -75,13 +76,21 @@ export class UploadPage implements OnInit {
           break;
         case HttpEventType.Response:
           this.checkResult(event.body)
-          console.log('File successfully created!', event.body);
+          console.log('File successfully created!', JSON.stringify(event.body));
+        case HttpEventType.UploadProgress:
       }
-    });
+    },
+      err => {
+        console.log("upload error:", JSON.stringify(err))
+        this.value = 0
+        this.percent = '0'
+        this.toastService.errorToast()
+      });
   }
 
   checkResult(res) {
-    if (res.success) {
+    if (res && res.path) {
+
       this.toastService.successToast()
 
     } else {
