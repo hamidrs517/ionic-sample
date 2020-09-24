@@ -25,17 +25,24 @@
   </div>
   <div>
     <ion-item>
-      <ion-button color="primary" class="submit-btn" expand="block" (click)="upload()">
+      <ion-button color="primary" class="submit-btn" expand="block" (click)="upload()" [disabled]="httpEventType===1">
         بارگذاری
       </ion-button>
     </ion-item>
   </div>
+
   <div>
     <ion-item>
       <ion-progress-bar color="primary" [value]="value"></ion-progress-bar>
       <span style="margin: auto;">{{percent}}</span>
     </ion-item>
   </div>
-
+  <div>
+    <ion-item>
+      <ion-button color="primary" class="submit-btn" expand="block" (click)="cancel()" [disabled]="httpEventType!==1">
+        لغو
+      </ion-button>
+    </ion-item>
+  </div>
 
 </ion-content>

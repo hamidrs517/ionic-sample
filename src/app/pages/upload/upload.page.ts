@@ -1,5 +1,6 @@
 import { HttpClient, HttpEvent, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ToastService } from 'src/app/services/toast.service';
 import { environment } from 'src/environments/environment';
 
@@ -13,10 +14,12 @@ export class UploadPage implements OnInit {
   file
   token = localStorage.getItem('token')
   title = ''
-  url: string = `${environment.api_url}/upload`
+  // url: string = `${environment.api_url}/upload`
+  url: string = `http://e19d0b7e9654.ngrok.io/api/upload`
   percent = "0";
   value = 0
-
+  unsubscriber: Subscription
+  httpEventType: HttpEventType
   constructor(
     private http: HttpClient,
     private toastService: ToastService
@@ -53,7 +56,7 @@ export class UploadPage implements OnInit {
     // formData.append('title', this.title);
     const accessToken = this.token
 
-    return this.http.post(url, formData, {
+    this.unsubscriber = this.http.post(url, formData, {
       headers: new HttpHeaders({
         // 'Authorization': `Bearer ${accessToken}`
       }),
@@ -64,20 +67,24 @@ export class UploadPage implements OnInit {
       switch (event.type) {
         case HttpEventType.Sent:
           console.log('Request has been made!');
+          this.httpEventType = HttpEventType.Sent
           break;
         case HttpEventType.ResponseHeader:
+          this.httpEventType = HttpEventType.ResponseHeader
           console.log('Response header has been received!');
           break;
         case HttpEventType.UploadProgress:
           // this.progress = Math.round(event.loaded / event.total * 100);
           this.percent = Math.round(event.loaded / event.total * 100) + "%";
-          this.value = Math.round(event.loaded / event.total * 100)
+          this.value = event.loaded / event.total
           console.log(`Uploaded! ${this.percent}%`);
+          console.log(`value! ${this.value}%`);
+          this.httpEventType = HttpEventType.UploadProgress
           break;
         case HttpEventType.Response:
           this.checkResult(event.body)
           console.log('File successfully created!', JSON.stringify(event.body));
-        case HttpEventType.UploadProgress:
+          this.httpEventType = HttpEventType.Response
       }
     },
       err => {
@@ -100,4 +107,11 @@ export class UploadPage implements OnInit {
     }
   }
 
+  cancel() {
+    this.unsubscriber.unsubscribe()
+    this.value = 0
+    this.percent = '0'
+    this.httpEventType = undefined
+    this.toastService.setToast("عملیات متوقف شد")
+  }
 }
