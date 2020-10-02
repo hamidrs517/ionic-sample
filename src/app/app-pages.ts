@@ -82,5 +82,11 @@ export const APP_PAGES = [
         url: '/app/tabs/about',
         icon: 'information-circle',
         loggedIn: true,
+    },
+    {
+        title: 'account',
+        url: '/account',
+        icon: 'information-circle',
+        loggedIn: false,
     }
 ];
