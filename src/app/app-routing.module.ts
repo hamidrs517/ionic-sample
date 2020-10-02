@@ -58,8 +58,14 @@ const routes: Routes = [
     path: 'geo-location',
     loadChildren: () => import('./pages/geo-location/geo-location.module').then(m => m.GeoLocationPageModule)
   },
+  {
+    path: 'account',
+    loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
+  },
+
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
+
 
 
   // {
