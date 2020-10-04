@@ -8,15 +8,17 @@ import { IonicModule } from '@ionic/angular';
 import { IndividualHealthPageRoutingModule } from './individual-health-routing.module';
 
 import { IndividualHealthPage } from './individual-health.page';
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ChartModule,
     IndividualHealthPageRoutingModule,
     SharedComponentsModule,
   ],
   declarations: [IndividualHealthPage]
 })
-export class IndividualHealthPageModule {}
+export class IndividualHealthPageModule { }

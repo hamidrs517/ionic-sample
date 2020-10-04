@@ -46,7 +46,7 @@ export class LoginPage implements OnInit, OnDestroy {
 
   onLogin() {
     console.warn(this.loginForm)
-
+    this.router.navigate(['/verify']);
     if (this.loginForm.valid) {
       this.isSubmitting = true;
       // this.errors = { errors: {} };

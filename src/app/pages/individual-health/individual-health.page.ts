@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart } from 'angular-highcharts';
+import { Router } from '@angular/router';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Chart } from 'chart.js';
 import { Question } from 'src/app/interfaces/question';
 import { AnswerService } from 'src/app/services/answer.service';
 import { QuestionService } from 'src/app/services/question.service';
@@ -8,92 +9,71 @@ import { QuestionService } from 'src/app/services/question.service';
   templateUrl: './individual-health.page.html',
   styleUrls: ['./individual-health.page.scss'],
 })
-export class IndividualHealthPage implements OnInit {
-
+export class IndividualHealthPage implements OnInit, AfterViewInit {
+  @ViewChild("lineCanvas") lineCanvas: ElementRef;
+  private lineChart: Chart;
   constructor(
     private qstService: QuestionService,
-    private ansService:AnswerService
-    ) {
+    private ansService: AnswerService,
+    private router: Router
+  ) {
 
   }
 
-  last14DaysAnswers = []
-  dailyQuestions:Question[] = []
 
 
-  chart: Chart;
+
+
+
+
+
+  last14DaysAnswers = [1, 1, 1, 1, 1]
+  dailyQuestions: Question[] = []
+
+
+  ngAfterViewInit(): void {
+    console.log(this.lineCanvas); this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+      type: "line",
+      data: {
+        labels: ["مرداد", "شهریور", "مهر"],
+        datasets: [
+          {
+            label: "My First dataset",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+            borderCapStyle: "butt",
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: "miter",
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [65, 59, 80, 81, 56, 55, 40],
+            spanGaps: false
+          }
+        ]
+      }
+    });
+  }
 
   ngOnInit() {
-    this.init();
-    this.qstService.getDailyQuestions().subscribe(res => {
-      this.dailyQuestions = res as Question[]
-      
-      this.ansService.getLast14DaysAnswers().subscribe(res=>{
-        this.last14DaysAnswers=res as any[];
-      });
 
-    })
   }
 
-  addPoint() {
-    if (this.chart) {
-      this.chart.addPoint(Math.floor(Math.random() * 10));
-    } else {
-      alert('init chart, first!');
-    }
+  goToQuestionList() {
+    // this.router.navigate(['question-list',{id:1}])
+    this.router.navigate(['question-list', { disable: true }])
   }
 
-  addSerie() {
-    this.chart.addSeries({
-      type: 'line',
-      name: 'Line ' + Math.floor(Math.random() * 10),
-      data: [
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10)
-      ]
-    }, true, true);
-  }
 
-  removePoint() {
-    this.chart.removePoint(this.chart.ref.series[0].data.length - 1);
-  }
 
-  removeSerie() {
-    this.chart.removeSeries(this.chart.ref.series.length - 1);
-  }
-
-  init() {
-    let chart = new Chart({
-      chart: {
-        type: 'line'
-      },
-      title: {
-        text: 'Linechart'
-      },
-      credits: {
-        enabled: false
-      },
-      series: [{
-        type: 'line',
-        name: 'Line 1',
-        data: [1, 2, 3]
-      }]
-    });
-    chart.addPoint(4);
-    this.chart = chart;
-    chart.addPoint(5);
-    setTimeout(() => {
-      chart.addPoint(6);
-    }, 2000);
-
-    chart.ref$.subscribe(console.log);
-  }
 
 }

@@ -9,27 +9,27 @@
     <ion-card-header>
       <ion-card-subtitle>{{question.title}}</ion-card-subtitle>
     </ion-card-header>
-  
+
     <ion-card-content>
-      
+
       <ion-list>
         <ion-radio-group>
-      
+
           <ion-item>
             <ion-label>بله</ion-label>
-            <ion-radio value="2"></ion-radio>
+            <ion-radio value="2" [disabled]="disableForm"></ion-radio>
           </ion-item>
 
           <ion-item>
             <ion-label>تا حدودی</ion-label>
-            <ion-radio value="1"></ion-radio>
+            <ion-radio value="1" [disabled]="disableForm"></ion-radio>
           </ion-item>
 
           <ion-item>
             <ion-label>خیر</ion-label>
-            <ion-radio value="0"></ion-radio>
+            <ion-radio value="0" [disabled]="disableForm"></ion-radio>
           </ion-item>
-      
+
         </ion-radio-group>
       </ion-list>
 

@@ -1,6 +1,19 @@
 export const APP_PAGES = [
 
     {
+        title: 'question-list',
+        url: '/question-list',
+        icon: 'calendar',
+        loggedIn: false,
+    },
+
+    {
+        title: 'individual-health',
+        url: '/individual-health',
+        icon: 'calendar',
+        loggedIn: false,
+    },
+    {
         title: 'place-details',
         url: '/place-details',
         icon: 'calendar',
