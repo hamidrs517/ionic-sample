@@ -30,8 +30,8 @@ export class AccountPage implements OnInit {
   }
 
   async loadData() {
-    await this.getAccount()
-    await this.createForm()
+    // await this.getAccount()
+    // await this.createForm()
   }
 
   private createForm() {
@@ -72,10 +72,11 @@ export class AccountPage implements OnInit {
   }
 
   submit() {
-    let user = {
-      ...this.accountForm.value, gender: this.gender
-    } as User
-    this.accountService.updateAccount(user)
+    // let user = {
+    //   ...this.accountForm.value, gender: this.gender
+    // } as User
+    // this.accountService.updateAccount(user)
+    this.router.navigate(['dashboard'])
   }
 
   getLocation() {
