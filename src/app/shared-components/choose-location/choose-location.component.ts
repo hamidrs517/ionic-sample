@@ -14,9 +14,10 @@ export class ChooseLocationComponent implements OnInit {
   dismiss() {
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data
-    this.modalCtrl.dismiss({
-      'dismissed': true
-    });
+    
+    // this.modalCtrl.dismiss({
+    //   'dismissed': true
+    // });
   }
 
 }

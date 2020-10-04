@@ -1,3 +1,4 @@
+import { SharedComponentsModule } from './../../shared-components/shared-components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,8 @@ import { IndividualHealthPage } from './individual-health.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    IndividualHealthPageRoutingModule
+    IndividualHealthPageRoutingModule,
+    SharedComponentsModule,
   ],
   declarations: [IndividualHealthPage]
 })

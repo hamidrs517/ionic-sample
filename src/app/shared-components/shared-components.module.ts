@@ -8,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
-    ChooseLocationComponent
+    ChooseLocationComponent,
 
   ],
   imports: [
@@ -17,7 +17,7 @@ import { IonicModule } from '@ionic/angular';
     CommonModule
   ],
   exports: [
-    ChooseLocationComponent
+    ChooseLocationComponent,
   ]
 })
 export class SharedComponentsModule { }

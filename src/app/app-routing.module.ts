@@ -3,6 +3,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'individual-health',
+    loadChildren: () => import('./pages/individual-health/individual-health.module').then(m => m.IndividualHealthPageModule),
+  },
+  {
     path: 'add-place',
     loadChildren: () => import('./pages/add-place/add-place.module').then(m => m.AddPlacePageModule),
   },

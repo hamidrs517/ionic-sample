@@ -18,7 +18,7 @@ import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { GoogleMapsModule } from '@angular/google-maps';
-
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +33,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     FormsModule,
     ReactiveFormsModule,
     GoogleMapsModule,
+    ChartModule,
     ToastrModule.forRoot(),
 
   ],

@@ -5,5 +5,23 @@
 </ion-header>
 
 <ion-content>
-  
+  <!-- <app-chart></app-chart> -->
+  <!-- <div [chart]="chart"></div> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3" *ngFor="let answer of last14DaysAnswers">
+        <table>
+          <tr>
+            <td rowspan="2">
+              07
+            </td>
+            <td>مهر</td>
+          </tr>
+          <tr>
+            <td>آیکن</td>
+          </tr>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
