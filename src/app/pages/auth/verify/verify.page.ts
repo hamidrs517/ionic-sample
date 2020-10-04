@@ -48,6 +48,7 @@ export class VerifyPage implements OnInit {
   }
 
   onVerify() {
+    this.router.navigate(['/account']);
     console.warn("onVerify", this.verifyForm)
     this.router.navigate(['/account'])
 

@@ -6,21 +6,16 @@
 
 <ion-content>
   <!-- <app-chart></app-chart> -->
-  <!-- <div [chart]="chart"></div> -->
+  <canvas #lineCanvas></canvas>
+
   <ion-grid>
     <ion-row>
-      <ion-col size="3" *ngFor="let answer of last14DaysAnswers">
-        <table>
-          <tr>
-            <td rowspan="2">
-              07
-            </td>
-            <td>مهر</td>
-          </tr>
-          <tr>
-            <td>آیکن</td>
-          </tr>
-        </table>
+      <ion-col size="4" *ngFor="let answer of last14DaysAnswers">
+        <div style="width: 100%;border-radius: 5px;border: solid grey 2px;height: 150px;" (click)="goToQuestionList()">
+          <div class="date">11/7</div>
+          <img src="assets/img/ok-icon.png" alt="">
+        </div>
+
       </ion-col>
     </ion-row>
   </ion-grid>

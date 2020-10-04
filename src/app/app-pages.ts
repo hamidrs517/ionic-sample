@@ -1,18 +1,4 @@
 export const APP_PAGES = [
-
-    {
-        title: 'ثبت امتیاز برای مکان',
-        url: '/set-place-point',
-        icon: 'calendar',
-        loggedIn: false,
-    },
-    {
-        title: 'اطلاعات مکان ها',
-        url: '/place-details',
-        icon: 'calendar',
-        loggedIn: false,
-    },
-
     {
         title: 'add-place',
         url: '/add-place',

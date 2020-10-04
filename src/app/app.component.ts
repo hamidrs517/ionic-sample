@@ -108,7 +108,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.appStateFunctions()
-    // this.checkLoginStatus();
+    this.checkLoginStatus();
     // this.listenForLoginEvents();
 
     // this.swUpdate.available.subscribe(async res => {
@@ -184,10 +184,11 @@ export class AppComponent implements OnInit {
     this.authService.loggedIn.subscribe(isloggedIn => {
       this.loggedIn = isloggedIn
     })
-    if (this.loggedIn) {
+    if (true) {
       console.warn("loggedIn", this.loggedIn)
-    } else {
       this.router.navigateByUrl('/login');
+    } else {
+      this.router.navigateByUrl('/home/search-places');
     }
     // return this.userService.isLoggedIn().then(loggedIn => {
     //   return this.updateLoggedInStatus(loggedIn);

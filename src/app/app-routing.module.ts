@@ -89,10 +89,10 @@ const routes: Routes = [{
   path: 'search-places',
   loadChildren: () => import('./pages/search-places/search-places.module').then(m => m.SearchPlacesPageModule),
 },
-{
-  path: 'set-place-point',
-  loadChildren: () => import('./pages/set-place-point/set-place-point.module').then(m => m.SetPlacePointPageModule)
-},
+// {
+//   path: 'set-place-point',
+//   loadChildren: () => import('./pages/set-place-point/set-place-point.module').then(m => m.SetPlacePointPageModule)
+// },
 { path: '', redirectTo: 'login', pathMatch: 'full' },
 { path: '**', redirectTo: 'login', pathMatch: 'full' },
 
