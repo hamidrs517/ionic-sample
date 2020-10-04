@@ -64,7 +64,11 @@ const routes: Routes = [
   },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },  {
+    path: 'individual-health',
+    loadChildren: () => import('./pages/individual-health/individual-health.module').then( m => m.IndividualHealthPageModule)
+  },
+
 
 
 
