@@ -1,10 +1,12 @@
 <div style="height: 100%;">
-  <google-map height="100%" width="100%">
-
+  <google-map height="100%" width="100%" [center]="center">
+    <map-marker #marker [position]="markerPosition" [options]="markerOptions"></map-marker>
+    <map-info-window>Info Window content</map-info-window>
   </google-map>
+
   <div style="width:100%;position: absolute;
  bottom: 50px;text-align: center;">
-    <ion-button color="primary" size="large" style="width: 40%;">ثبت</ion-button>
+    <ion-button color="primary" size="large" style="width: 40%;" (click)="dismiss()">ثبت</ion-button>
   </div>
 
 </div>

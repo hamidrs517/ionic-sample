@@ -24,15 +24,9 @@ import { ChooseLocationComponent } from 'src/app/shared-components/choose-locati
 })
 export class AddPlacePageModule {
 
-  constructor(public modalController: ModalController) {
-    this.presentModal();
+  constructor() {
+
   }
 
-  async presentModal() {
-    const modal = await this.modalController.create({
-      component: ChooseLocationComponent,
-      cssClass: 'my-custom-class'
-    });
-    return await modal.present();
-  }
+
 }
