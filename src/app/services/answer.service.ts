@@ -14,7 +14,8 @@ export class AnswerService {
 
     getLast14DaysAnswers() {
         let userId
-        return this.http.get(`${this.configService.root}/${this.profileRoute}/${userId}`)
+        // return this.http.get(`${this.configService.root}/${this.profileRoute}/${userId}`)
+        
     }
 
 

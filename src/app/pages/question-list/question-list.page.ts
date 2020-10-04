@@ -18,16 +18,11 @@ export class QuestionListPage implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    // this.qstService.getDailyQuestions().subscribe(res => {
+    //   this.allQuestions = res as Question[];
+    // })
 
-    if (this.activatedRoute.snapshot.params['disabled']) {
-      this.disableForm = this.activatedRoute.snapshot.params['disabled']
-    }
-
-    this.qstService.getDailyQuestions().subscribe(res => {
-      this.allQuestions = res as Question[];
-      console.warn(this.allQuestions);
-
-    })
+    this.allQuestions = this.qstService.getDailyQuestions();
   }
 
 }
