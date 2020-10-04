@@ -1,4 +1,12 @@
 export const APP_PAGES = [
+
+    {
+        title: 'place-details',
+        url: '/place-details',
+        icon: 'calendar',
+        loggedIn: false,
+    },
+
     {
         title: 'add-place',
         url: '/add-place',

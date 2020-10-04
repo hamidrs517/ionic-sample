@@ -1,3 +1,5 @@
+import { ChooseLocationComponent } from './../../shared-components/choose-location/choose-location.component';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
@@ -8,11 +10,20 @@ import { ModalController } from '@ionic/angular';
 })
 export class AddPlacePage implements OnInit {
 
-  constructor(public modalController: ModalController) {
+  constructor(public modalCtrl: ModalController) {
+    console.log("dddd");
 
   }
 
   ngOnInit() {
+  }
+  async openMap() {
+    const modal = await this.modalCtrl.create({
+      component: ChooseLocationComponent
+    });
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+    console.log(data);
   }
 
 }

@@ -1,3 +1,4 @@
+import { SharedComponentsModule } from './shared-components/shared-components.module';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -26,6 +27,7 @@ import { ChartModule } from 'angular-highcharts';
   imports: [
     BrowserModule,
     CommonModule,
+    SharedComponentsModule,
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
