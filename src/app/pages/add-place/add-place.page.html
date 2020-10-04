@@ -7,7 +7,8 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-icon name="albums-outline"></ion-icon>
+      <!-- <ion-icon name="albums-outline"></ion-icon> -->
+      <img src="assets/img/cat-icon.png" style="width:24px" />
       <ion-label>دسته بندی</ion-label>
       <ion-select placeholder="انتخاب کنید">
         <ion-select-option value="f">Female</ion-select-option>
@@ -15,7 +16,8 @@
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-icon name="map-outline"></ion-icon>
+      <!-- <ion-icon name="map-outline"></ion-icon> -->
+      <img src="assets/img/city-icon.png" style="width:24px" />
       <ion-label>استان</ion-label>
       <ion-select placeholder="انتخاب کنید">
         <ion-select-option value="f">Female</ion-select-option>
@@ -23,7 +25,8 @@
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-icon name="map-outline"></ion-icon>
+      <!-- <ion-icon name="map-outline"></ion-icon> -->
+      <img src="assets/img/city-icon.png" style="width:24px" />
       <ion-label>شهر</ion-label>
       <ion-select placeholder="انتخاب کنید">
         <ion-select-option value="f">Female</ion-select-option>
@@ -33,34 +36,45 @@
 
 
     <ion-item>
-      <ion-icon name="home-outline"></ion-icon>
+      <!-- <ion-icon name="home-outline"></ion-icon> -->
+      <img src="assets/img/house-icon.png" style="width:24px" />
       <ion-label position="fixed">نام مکان</ion-label>
       <ion-input></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-icon name="golf-outline"></ion-icon>
-      <ion-label position="fixed">آدرس</ion-label>
-      <ion-textarea rows="3" cols="20" placeholder=""></ion-textarea>
-    </ion-item>
-    <ion-item>
-      <ion-button expand="block" (click)="openMap()">انتخاب روی نقشه</ion-button>
-    </ion-item>
-
-
-
-    <ion-item>
-      <ion-icon name="call-outline"></ion-icon>
+      <!-- <ion-icon name="call-outline"></ion-icon> -->
+      <img src="assets/img/phone-icon.png" style="width:24px" />
       <ion-label position="fixed">تلفن</ion-label>
       <ion-input></ion-input>
     </ion-item>
-
     <ion-item>
+      <img src="assets/img/location-icon.png" style="width:24px" />
+      <ion-label (click)="openMap()">انتخاب موقعیت</ion-label>
+      <!-- <div style="text-align: center;width: 100%;">
+        <img src="assets/img/location-icon.png" style="width:96px" (click)="openMap()" />
+      </div> -->
+      <!-- <ion-button expand="block" (click)="openMap()">انتخاب روی نقشه</ion-button> -->
 
+
+    </ion-item>
+    <ion-item>
+      <!-- <ion-icon name="golf-outline"></ion-icon> -->
+      <img src="assets/img/address-icon.png" style="width:24px" />
+      <ion-label position="fixed">آدرس</ion-label>
+      <!-- <ion-textarea rows="3" cols="20" placeholder=""></ion-textarea> -->
+    </ion-item>
+    <ion-item>
+      <!-- <ion-icon name="golf-outline"></ion-icon> -->
+
+      <ion-textarea rows="3" cols="20" placeholder=""></ion-textarea>
     </ion-item>
 
 
-    <ion-button expand="block">Block Button</ion-button>
+
+    <div style="width:100%;text-align: center;">
+      <ion-button color="success" size="large" style="width: 40%;">ثبت</ion-button>
+    </div>
+
 
 
   </ion-list>
