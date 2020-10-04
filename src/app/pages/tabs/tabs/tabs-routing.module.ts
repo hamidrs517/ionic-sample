@@ -8,12 +8,12 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'photo-chooser-tab',
+        path: 'search-places',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab4/tab4.module').then(m => m.Tab4PageModule)
+              import('../../search-places/search-places.module').then(m => m.SearchPlacesPageModule)
           }
         ]
       },
@@ -28,12 +28,12 @@ const routes: Routes = [
       //   ]
       // },
       {
-        path: 'take-photo',
+        path: 'individual-health',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../../individual-health/individual-health.module').then(m => m.IndividualHealthPageModule)
           }
         ]
       },
@@ -50,7 +50,7 @@ const routes: Routes = [
 
       {
         path: '',
-        redirectTo: '/dashboard/photo-chooser-tab',
+        redirectTo: '/dashboard/search-places',
         pathMatch: 'full'
       }
     ]

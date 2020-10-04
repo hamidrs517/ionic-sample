@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ثبت وضعیت بهداشت</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      آخرین وضعیت این نقطه از شهر را گزارش کنید و با پاسخ دهی دقیق به همه کمک کنید تا نقاط خطرناک شهر را بهتر بشناسند
+    </ion-list-header>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="assets/img/mask-icon.png" style="width: 100%;" />
+      </ion-avatar>
+      <ion-label>
+      </ion-label>
+      <ion-range min="1" max="5" snaps="true" value="3">
+      </ion-range>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="assets/img/sant-icon.png" style="width: 100%;" />
+      </ion-avatar>
+      <ion-label>
+        وجود مواد ضد عفونی کننده
+      </ion-label>
+      <!-- <app-rating (rate)="getRateOfSant($event)"></app-rating> -->
+      <ion-range min="1" max="5" snaps="true" step="1">
+      </ion-range>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="assets/img/dist-icon.png" style="width: 100%;" />
+      </ion-avatar>
+      <ion-label>
+        <h2>رعایت فاصله اجتماعی</h2>
+      </ion-label>
+      <!-- <app-rating (rate)="getRateOfDist($event)"></app-rating> -->
+      <ion-range min="1" max="5" snaps="true" step="1">
+      </ion-range>
+
+    </ion-item>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="assets/img/air-icon.png" style="width: 100%;" />
+      </ion-avatar>
+      <ion-label>
+        <h2>تهویه مناسب</h2>
+      </ion-label>
+      <!-- <app-rating (rate)="getRateOfAir($event)"></app-rating> -->
+      <ion-range min="1" max="5" snaps="true" step="1">
+      </ion-range>
+
+    </ion-item>
+    <ion-item>
+      <ion-button color="primary" (click)="submit()"> ثبت</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
