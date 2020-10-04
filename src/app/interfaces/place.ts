@@ -1,3 +1,6 @@
+import { PlaceCategory } from './place-category';
+import { PlaceHistory } from './place-history';
+
 export interface Place {
     id: number;
     title: string;
@@ -7,5 +10,10 @@ export interface Place {
     adderss: string;
     provinceFk?: number;
     cityFk?: number;
-    tel: string;
+    tel?: string;
+    // CityFkNavigation?:city;
+    placeCategoryFkNavigation?: PlaceCategory;
+    placeHistory?: PlaceHistory[]
+
+
 }
