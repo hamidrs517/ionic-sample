@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { IonicModule } from '@ionic/angular';
+import { PlaceHealthDetailsComponent } from './place-health-details/place-health-details.component';
 
 
 
 @NgModule({
   declarations: [
-    ChooseLocationComponent
+    ChooseLocationComponent,
+    PlaceHealthDetailsComponent
 
   ],
   imports: [
@@ -17,7 +19,8 @@ import { IonicModule } from '@ionic/angular';
     CommonModule
   ],
   exports: [
-    ChooseLocationComponent
+    ChooseLocationComponent,
+    PlaceHealthDetailsComponent
   ]
 })
 export class SharedComponentsModule { }

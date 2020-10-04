@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>بانک ملی شعبه چهارباغ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-segment [value]="segValue">
+      <ion-segment-button value="health" (click)="segValue='health'">
+        وضعیت بهداشتی
+      </ion-segment-button>
+      <ion-segment-button value="comments" (click)="segValue='comments'">
+        نظرات
+      </ion-segment-button>
+      <ion-segment-button value="location" (click)="segValue='location'">
+        مکان روی نقشه
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div *ngIf="segValue=='health'">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div style="width: 100%;border-radius: 5px;border: solid red 2px;">
+            <ion-badge color="success">11</ion-badge>
+            <img src="assets/img/mask-icon.png" style="width: 100%;" />
+          </div>
+        </ion-col>
+        <ion-col>
+          <div style="width: 100%">
+            <img src="assets/img/sant-icon.png" style="width: 100%;border-radius: 5px;border: solid orange 2px;" />
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div style="width: 100%">
+            <img src="assets/img/dist-icon.png" style="width: 100%;border-radius: 5px;border: solid green 2px;" />
+          </div>
+        </ion-col>
+        <ion-col>
+          <div style="width: 100%">
+            <img src="assets/img/air-icon.png" style="width: 100%;border-radius: 5px;border: solid red 2px;" />
+          </div>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+
+
+
+
+
+  </div>
+  <div *ngIf="segValue=='comments'">
+
+
+    <ion-card>
+      <ion-item>
+        <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+        <ion-label>علی</ion-label>
+        <ion-button fill="outline" slot="end" (click)="showUserScores()">...</ion-button>
+      </ion-item>
+      <ion-card-content>
+        خیلی عالی بود همه چیز رعایت شده بود
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+        <ion-label>علی</ion-label>
+        <ion-button fill="outline" slot="end">...</ion-button>
+      </ion-item>
+      <ion-card-content>
+        خیلی عالی بود همه چیز رعایت شده بود
+      </ion-card-content>
+    </ion-card>
+
+
+
+
+  </div>
+
+  <google-map *ngIf="segValue=='location'" height="100%" width="100%"></google-map>
+
+
+
+</ion-content>
