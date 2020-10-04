@@ -3,6 +3,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'add-place',
+    loadChildren: () => import('./pages/add-place/add-place.module').then(m => m.AddPlacePageModule),
+  },
+  {
     path: 'dashboard',
     loadChildren: () => import('./pages/tabs/tabs/tabs.module').then(m => m.TabsPageModule),
   },
@@ -64,10 +68,14 @@ const routes: Routes = [
   },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' },  {
-    path: 'individual-health',
-    loadChildren: () => import('./pages/individual-health/individual-health.module').then( m => m.IndividualHealthPageModule)
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'add-place',
+    loadChildren: () => import('./pages/add-place/add-place.module').then(m => m.AddPlacePageModule)
   },
+
+
+
 
 
 

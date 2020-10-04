@@ -1,5 +1,11 @@
 export const APP_PAGES = [
     {
+        title: 'add-place',
+        url: '/add-place',
+        icon: 'calendar',
+        loggedIn: false,
+    },
+    {
         title: 'تب ها',
         url: '/dashboard',
         icon: 'calendar',
