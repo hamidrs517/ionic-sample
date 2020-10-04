@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>شرح وضعیت روزانه</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let question of allQuestions">
+    <ion-card-header>
+      <ion-card-subtitle>{{question.title}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      
+      <ion-list>
+        <ion-radio-group>
+      
+          <ion-item>
+            <ion-label>بله</ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>تا حدودی</ion-label>
+            <ion-radio value="1"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>خیر</ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+      
+        </ion-radio-group>
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button>
+    ثبت اطلاعات
+  </ion-button>
+</ion-content>

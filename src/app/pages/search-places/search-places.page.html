@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>جستجوی اماکن</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+
+
+      <ion-select placeholder="انتخاب دسته بندی" style="max-width: max-content;">
+        <ion-select-option value="1">اماکن تفریحی</ion-select-option>
+        <ion-select-option value="2">بانک ها</ion-select-option>
+        <ion-select-option value="3">ادارات</ion-select-option>
+        <ion-select-option value="4">اماکن آموزشی</ion-select-option>
+      </ion-select>
+
+      <ion-item>
+        <ion-label position="floating">کجا میخوای بری؟</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+      <ion-toolbar>
+
+        <ion-segment color="primary" [(ngModel)]="type" scrollable>
+          <ion-segment-button value="list" checked>
+            <ion-label>لیست</ion-label>
+            <ion-icon name="list"></ion-icon>
+          </ion-segment-button>
+          <ion-segment-button value="map">
+            <ion-label>نقشه</ion-label>
+            <ion-icon name="map"></ion-icon>
+          </ion-segment-button>
+        </ion-segment>
+
+        <div [ngSwitch]="type">
+          <ion-list *ngSwitchCase="'list'">
+            <ion-item *ngFor="let item of searchResult; let i = index">
+              <table style="width: 100%;">
+                <tr>
+                  <td rowspan="2">
+                    <ion-icon name="business-outline" style="font-size: 30px;"></ion-icon>
+                  </td>
+                  <td colspan="2">{{item.title}}</td>
+                </tr>
+                <tr>
+                  <td>میانگین امتیاز: 87</td>
+                  <td>
+                    <ion-button>ثبت وضعیت بهداشتی</ion-button>
+                  </td>
+                </tr>
+              </table>
+            </ion-item>
+          </ion-list>
+
+          <ion-list *ngSwitchCase="'map'">
+            <ion-item>
+
+            </ion-item>
+          </ion-list>
+
+        </div>
+      </ion-toolbar>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

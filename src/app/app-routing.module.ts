@@ -81,6 +81,14 @@ const routes: Routes = [{
   path: 'place-details',
   loadChildren: () => import('./pages/place-details/place-details.module').then(m => m.PlaceDetailsPageModule)
 },
+{
+  path: 'question-list',
+  loadChildren: () => import('./pages/question-list/question-list.module').then(m => m.QuestionListPageModule)
+},
+{
+  path: 'search-places',
+  loadChildren: () => import('./pages/search-places/search-places.module').then(m => m.SearchPlacesPageModule),
+},
 { path: '', redirectTo: 'login', pathMatch: 'full' },
 { path: '**', redirectTo: 'login', pathMatch: 'full' },
 
