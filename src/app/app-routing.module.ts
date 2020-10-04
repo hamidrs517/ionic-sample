@@ -39,10 +39,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/file-system/file-system.module').then(m => m.FileSystemPageModule)
   },
   {
-    path: 'signup',
-    loadChildren: () => import('./pages/auth/signup/signup.module').then(m => m.SignUpModule),
-  },
-  {
     path: 'upload',
     loadChildren: () => import('./pages/upload/upload.module').then(m => m.UploadPageModule)
   },
@@ -70,6 +66,10 @@ const routes: Routes = [
     path: 'account',
     loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
   },
+  {
+    path: 'verify',
+    loadChildren: () => import('./pages/auth/verify/verify.module').then(m => m.VerifyPageModule)
+  },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
@@ -77,6 +77,7 @@ const routes: Routes = [
     path: 'add-place',
     loadChildren: () => import('./pages/add-place/add-place.module').then(m => m.AddPlacePageModule)
   },
+
 
 
 

@@ -13,41 +13,25 @@
     <img src="assets/img/irisapp.png" alt="Ionic logo">
   </div>
 
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+  <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
     <ion-list>
       <ion-item>
-        <ion-label style="align-self: flex-start;" position="stacked" color="primary">ایمیل</ion-label>
-        <ion-input formControlName="email" name="email" type="text" spellcheck="false" autocapitalize="off" required>
+        <ion-label style="align-self: flex-start;" position="stacked" color="primary">شماره موبایل</ion-label>
+        <ion-input formControlName="mobile" name="mobile" type="text" spellcheck="false" autocapitalize="off" required>
         </ion-input>
       </ion-item>
 
-      <ion-text color="danger" *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">
-        <!-- <div class="ion-text-start"> -->
+      <ion-text color="danger" *ngIf="loginForm.controls.mobile.invalid && loginForm.controls.mobile.touched">
         <p>
-          ایمیل وارد شده معتبر نیست !
-        </p>
-        <!-- </div> -->
-      </ion-text>
-
-      <ion-item>
-        <ion-label style="align-self: flex-start;" position="stacked" color="primary">کلمه عبور</ion-label>
-        <ion-input formControlName="password" name="password" type="password">
-        </ion-input>
-      </ion-item>
-
-      <ion-text color="danger" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
-        <p class="ion-padding-start">
-          کلمه عبور معتبر نیست!
+          شماره وارد شده معتبر نیست !
         </p>
       </ion-text>
+
     </ion-list>
 
     <ion-row>
       <ion-col>
-        <ion-button type="submit" expand="block">ورود</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button (click)="onSignup()" color="light" expand="block">ثبت نام</ion-button>
+        <ion-button type="submit" expand="block">ارسال</ion-button>
       </ion-col>
     </ion-row>
   </form>

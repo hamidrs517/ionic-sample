@@ -1,8 +1,14 @@
 export interface User {
   id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  bio?: string;
-  image?: string;
+  mobile: string;
+  province: string;
+  name: string;
+  family: string;
+  age: number;
+  gender: boolean;
+  weight?: any;
+  hasDiabet?: boolean;
+  hasBloodPressure?: boolean;
+  hasRespiratoryDisease?: boolean;
+  hasHeartDisease?: boolean;
 }
