@@ -3,6 +3,14 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'search-places',
+    loadChildren: () => import('./pages/search-places/search-places.module').then(m => m.SearchPlacesPageModule),
+  },
+  {
+    path: 'question-list',
+    loadChildren: () => import('./pages/question-list/question-list.module').then(m => m.QuestionListPageModule),
+  },
+  {
     path: 'individual-health',
     loadChildren: () => import('./pages/individual-health/individual-health.module').then(m => m.IndividualHealthPageModule),
   },
@@ -77,6 +85,16 @@ const routes: Routes = [
     path: 'add-place',
     loadChildren: () => import('./pages/add-place/add-place.module').then(m => m.AddPlacePageModule)
   },
+  {
+    path: 'question-list',
+    loadChildren: () => import('./pages/question-list/question-list.module').then( m => m.QuestionListPageModule)
+  },
+  {
+    path: 'search-places',
+    loadChildren: () => import('./pages/search-places/search-places.module').then( m => m.SearchPlacesPageModule)
+  },
+
+
 
 
 
