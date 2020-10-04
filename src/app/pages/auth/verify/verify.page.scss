@@ -1,0 +1,20 @@
+.verify-logo {
+  padding: 20px 0;
+  min-height: 200px;
+  text-align: center;
+}
+
+.verify-logo img {
+  max-width: 150px;
+}
+
+.list {
+  margin-bottom: 0;
+}
+
+// .label-stacked.sc-ion-label-md-h, .label-floating.sc-ion-label-md-h {
+// }
+
+ion-label{
+    align-self: flex-start;
+}

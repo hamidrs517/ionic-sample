@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Plugins } from '@capacitor/core';
 
 
 import { Subject } from 'rxjs';
 import { Errors } from 'src/app/interfaces/errors';
 import { AuthService } from 'src/app/services/auth.service';
-
+const { Storage } = Plugins
 
 
 @Component({
@@ -23,12 +24,8 @@ export class LoginPage implements OnInit, OnDestroy {
   loginForm: FormGroup;
 
 
-  get email(): string {
-    return this.loginForm.get('email').value;
-  }
-
-  get password(): string {
-    return this.loginForm.get('password').value;
+  get mobile(): string {
+    return this.loginForm.get('mobile').value;
   }
 
   constructor(
@@ -44,18 +41,6 @@ export class LoginPage implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.route.url.subscribe(data => {
-    //   // console.warn(data)
-    //   // // Get the last piece of the URL (it's either 'login' or 'register')
-    //   // this.authType = data[data.length - 1].path;
-    //   // // // Set a title for the page accordingly
-    //   // // this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
-    //   // // add form control for username if this is the register page
-    //   // if (this.authType === 'register') {
-    //   //   // this.authForm.addControl('username', new FormControl());
-    //   //   this.onSignup()
-    //   // }
-    // });
     this.createForm()
   }
 
@@ -64,24 +49,30 @@ export class LoginPage implements OnInit, OnDestroy {
 
     if (this.loginForm.valid) {
       this.isSubmitting = true;
-      this.errors = { errors: {} };
-      const credentials = this.loginForm.value;
+      // this.errors = { errors: {} };
+      // const credentials = this.loginForm.value;
+      this.authService.login(this.mobile).subscribe(async res => {
+        if (res) {
+          await Storage.set({ key: "mobile", value: this.mobile.toString() })
+          this.router.navigate(['/verify'])
 
-      // for test
-      this.authService.loggedIn.next(true)
-      this.router.navigate(['/dashboard'])
+        } else {
+          console.error("verify error", res)
+
+        }
+      },
+        error => {
+          console.error("verify error")
+
+        })
+
     }
 
   }
 
-  onSignup() {
-    this.router.navigateByUrl('/signup');
-  }
-
   private createForm() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      mobile: ['', [Validators.required]],
     });
   }
 }

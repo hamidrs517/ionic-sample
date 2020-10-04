@@ -108,7 +108,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.appStateFunctions()
-    this.checkLoginStatus();
+    // this.checkLoginStatus();
     // this.listenForLoginEvents();
 
     // this.swUpdate.available.subscribe(async res => {
