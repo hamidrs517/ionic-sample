@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Plugins } from '@capacitor/core';
 
 
 import { Subject } from 'rxjs';
 import { Errors } from 'src/app/interfaces/errors';
 import { AuthService } from 'src/app/services/auth.service';
-
+const { Storage } = Plugins
 
 
 @Component({
@@ -48,15 +49,23 @@ export class LoginPage implements OnInit, OnDestroy {
 
     if (this.loginForm.valid) {
       this.isSubmitting = true;
-      this.errors = { errors: {} };
-      const credentials = this.loginForm.value;
-      let success = true;
-      if (success) {
-        this.router.navigate(['/verify'])
+      // this.errors = { errors: {} };
+      // const credentials = this.loginForm.value;
+      this.authService.login(this.mobile).subscribe(async res => {
+        if (res) {
+          await Storage.set({ key: "mobile", value: this.mobile.toString() })
+          this.router.navigate(['/verify'])
 
-      } else {
-        console.error("verify error")
-      }
+        } else {
+          console.error("verify error", res)
+
+        }
+      },
+        error => {
+          console.error("verify error")
+
+        })
+
     }
 
   }

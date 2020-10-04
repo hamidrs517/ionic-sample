@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Plugins } from '@capacitor/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { User } from 'src/app/interfaces/user';
 import { AccountService } from 'src/app/services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
-
+const { Storage } = Plugins
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
@@ -14,6 +15,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AccountPage implements OnInit {
   gender: boolean = true
+  userInLocalStorage: User
   constructor(
     public router: Router,
     private formBuilder: FormBuilder,
@@ -22,9 +24,9 @@ export class AccountPage implements OnInit {
   ) { }
   user: User
   accountForm: FormGroup;
-  accountId = localStorage.getItem('id') ? localStorage.getItem('id') : 1
-  ngOnInit(): void {
-    // this.loadData()
+  async ngOnInit() {
+    this.userInLocalStorage = JSON.parse((await Storage.get({ key: 'user' })).value)
+
   }
 
   async loadData() {
@@ -51,7 +53,7 @@ export class AccountPage implements OnInit {
 
   async getAccount() {
     try {
-      this.user = (await this.accountService.getAccount(Number(this.accountId)).toPromise()) as User
+      this.user = (await this.accountService.getAccount(Number(this.userInLocalStorage.id)).toPromise()) as User
     } catch (error) {
       console.log('error caught in getAccount')
       console.error(error);
@@ -74,6 +76,10 @@ export class AccountPage implements OnInit {
       ...this.accountForm.value, gender: this.gender
     } as User
     this.accountService.updateAccount(user)
+  }
+
+  getLocation() {
+
   }
 
   cityActionSheetOptions: any = {

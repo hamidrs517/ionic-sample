@@ -17,6 +17,9 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { ChartModule } from 'angular-highcharts';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -29,6 +32,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
     IonicStorageModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
+    GoogleMapsModule,
+    ChartModule,
     ToastrModule.forRoot(),
 
   ],

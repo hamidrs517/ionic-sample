@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Plugins } from '@capacitor/core';
 import { Subject } from 'rxjs';
+import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
+const { Storage } = Plugins
 
 @Component({
   selector: 'app-verify',
@@ -15,7 +18,7 @@ export class VerifyPage implements OnInit {
   title: string = '';
   isSubmitting = false;
   verifyForm: FormGroup;
-
+  mobile: string
 
   get code(): string {
     return this.verifyForm.get('code').value;
@@ -26,7 +29,9 @@ export class VerifyPage implements OnInit {
     private formBuilder: FormBuilder,
     // private route: ActivatedRoute,
     private authService: AuthService,
-  ) { }
+  ) {
+
+  }
 
   ngOnDestroy(): void {
     this.destroy.next();
@@ -34,7 +39,12 @@ export class VerifyPage implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getMobile()
     this.createForm()
+  }
+
+  async getMobile() {
+    this.mobile = (await Storage.get({ key: 'mobile' })).value
   }
 
   onVerify() {
@@ -45,9 +55,26 @@ export class VerifyPage implements OnInit {
       // this.errors = { errors: {} };
       const credentials = this.verifyForm.value;
 
-      // for test
-      this.authService.loggedIn.next(true)
-      this.router.navigate(['/account'])
+      this.authService.login(this.mobile).subscribe(async (res: User) => {
+        if (res) {
+          this.authService.user.next(res)
+          Storage.set({
+            key: 'user',
+            value: JSON.stringify(res)
+          })
+          this.authService.loggedIn.next(true)
+          this.router.navigate(['/account'])
+
+        } else {
+          console.error("verify error", res)
+
+        }
+      },
+        error => {
+          console.error("verify error")
+
+        })
+
     }
 
   }
