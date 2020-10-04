@@ -49,31 +49,32 @@ export class VerifyPage implements OnInit {
 
   onVerify() {
     console.warn("onVerify", this.verifyForm)
+    this.router.navigate(['/account'])
 
     if (this.verifyForm.valid) {
       this.isSubmitting = true;
       // this.errors = { errors: {} };
       const credentials = this.verifyForm.value;
 
-      this.authService.login(this.mobile).subscribe(async (res: User) => {
-        if (res) {
-          this.authService.user.next(res)
-          Storage.set({
-            key: 'user',
-            value: JSON.stringify(res)
-          })
-          this.authService.loggedIn.next(true)
-          this.router.navigate(['/account'])
+      // this.authService.login(this.mobile).subscribe(async (res: User) => {
+      //   if (res) {
+      //     this.authService.user.next(res)
+      //     Storage.set({
+      //       key: 'user',
+      //       value: JSON.stringify(res)
+      //     })
+      //     this.authService.loggedIn.next(true)
+      this.router.navigate(['/account'])
 
-        } else {
-          console.error("verify error", res)
+      //   } else {
+      //     console.error("verify error", res)
 
-        }
-      },
-        error => {
-          console.error("verify error")
+      //   }
+      // },
+      //   error => {
+      //     console.error("verify error")
 
-        })
+      //   })
 
     }
 

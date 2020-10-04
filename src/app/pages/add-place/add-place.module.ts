@@ -22,11 +22,4 @@ import { ChooseLocationComponent } from 'src/app/shared-components/choose-locati
   ],
   declarations: [AddPlacePage]
 })
-export class AddPlacePageModule {
-
-  constructor() {
-
-  }
-
-
-}
+export class AddPlacePageModule { }

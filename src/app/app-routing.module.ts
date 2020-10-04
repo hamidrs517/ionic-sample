@@ -65,10 +65,10 @@ const routes: Routes = [{
   path: 'account',
   loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
 },
-// {
-//   path: 'verify',
-//   loadChildren: () => import('./pages/auth/verify/verify.module').then(m => m.VerifyPageModule)
-// },
+{
+  path: 'verify',
+  loadChildren: () => import('./pages/auth/verify/verify.module').then(m => m.VerifyPageModule)
+},
 {
   path: 'individual-health',
   loadChildren: () => import('./pages/individual-health/individual-health.module').then(m => m.IndividualHealthPageModule),
@@ -89,8 +89,14 @@ const routes: Routes = [{
   path: 'search-places',
   loadChildren: () => import('./pages/search-places/search-places.module').then(m => m.SearchPlacesPageModule),
 },
+{
+  path: 'set-place-point',
+  loadChildren: () => import('./pages/set-place-point/set-place-point.module').then(m => m.SetPlacePointPageModule)
+},
 { path: '', redirectTo: 'login', pathMatch: 'full' },
 { path: '**', redirectTo: 'login', pathMatch: 'full' },
+
+
 
 
 

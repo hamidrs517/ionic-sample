@@ -51,20 +51,20 @@ export class LoginPage implements OnInit, OnDestroy {
       this.isSubmitting = true;
       // this.errors = { errors: {} };
       // const credentials = this.loginForm.value;
-      this.authService.login(this.mobile).subscribe(async res => {
-        if (res) {
-          await Storage.set({ key: "mobile", value: this.mobile.toString() })
-          this.router.navigate(['/verify'])
+      // this.authService.login(this.mobile).subscribe(async res => {
+      //   if (res) {
+      // await Storage.set({ key: "mobile", value: this.mobile.toString() })
+      this.router.navigate(['/verify'])
 
-        } else {
-          console.error("verify error", res)
+      //   } else {
+      //     console.error("verify error", res)
 
-        }
-      },
-        error => {
-          console.error("verify error")
+      //   }
+      // },
+      //   error => {
+      //     console.error("verify error")
 
-        })
+      //   })
 
     }
 
