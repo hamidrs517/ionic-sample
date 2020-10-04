@@ -1,21 +1,21 @@
 <ion-item>
   <!-- <img src="assets/img/mask-icon.png" style="width: 24px;" /> -->
   <ion-label>استفاده افراد از ماسک</ion-label>
-  <ion-badge color="success" slot="end">22</ion-badge>
+  <ion-badge color="success" slot="end">{{history.mask}}</ion-badge>
 </ion-item>
 <ion-item>
   <ion-label>وجود مواد ضد عفونی</ion-label>
-  <ion-badge color="warning" slot="end">22</ion-badge>
+  <ion-badge color="warning" slot="end">{{history.sanitizer}}</ion-badge>
 </ion-item>
 <ion-item>
   <ion-label>رعایت فاصله اجتماعی</ion-label>
-  <ion-badge color="danger" slot="end">22</ion-badge>
+  <ion-badge color="danger" slot="end">{{history.socialDistanding}}</ion-badge>
 </ion-item>
 <ion-item>
   <ion-label>تهویه مناسب</ion-label>
-  <ion-badge color="success" slot="end">22</ion-badge>
+  <ion-badge color="success" slot="end">{{history.airConditioning}}</ion-badge>
 </ion-item>
 <div style="text-align: center;margin-top: 30px;">
 
-  <ion-badge style="font-size: 40px;" color="success" slot="end">22</ion-badge>
+  <ion-badge style="font-size: 40px;" color="success" slot="end">{{getAverage()}}</ion-badge>
 </div>

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>بانک ملی شعبه چهارباغ</ion-title>
+    <ion-title>{{place.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -25,13 +25,13 @@
       <ion-row>
         <ion-col>
           <div style="width: 100%;border-radius: 5px;border: solid rgb(75, 75, 75) 2px;">
-            <ion-badge color="success">90</ion-badge>
+            <ion-badge [color]="getColorBasedOnAverage(getMaskAverage())">{{getMaskAverage()}}</ion-badge>
             <img src="assets/img/mask-icon.png" style="width: 100%;" />
           </div>
         </ion-col>
         <ion-col>
           <div style="width: 100%;border-radius: 5px;border: solid rgb(75, 75, 75) 2px;">
-            <ion-badge color="success">83</ion-badge>
+            <ion-badge [color]="getColorBasedOnAverage(getSanitizerAverage())">{{getSanitizerAverage()}}</ion-badge>
             <img src="assets/img/sant-icon.png" style="width: 100%;" />
           </div>
         </ion-col>
@@ -39,13 +39,13 @@
       <ion-row>
         <ion-col>
           <div style="width: 100%;border-radius: 5px;border: solid rgb(75, 75, 75) 2px;">
-            <ion-badge color="warning">53</ion-badge>
+            <ion-badge [color]="getColorBasedOnAverage(getSocialDistandingAverage())">{{getSocialDistandingAverage()}}</ion-badge>
             <img src="assets/img/dist-icon.png" style="width: 100%;" />
           </div>
         </ion-col>
         <ion-col>
           <div style="width: 100%;border-radius: 5px;border: solid rgb(75, 75, 75) 2px;">
-            <ion-badge color="danger">11</ion-badge>
+            <ion-badge [color]="getColorBasedOnAverage(getAirConditioningAverage())">{{getAirConditioningAverage()}}</ion-badge>
             <img src="assets/img/air-icon.png" style="width: 100%;" />
           </div>
         </ion-col>
@@ -62,34 +62,21 @@
   <div *ngIf="segValue=='comments'">
 
 
-    <ion-card>
+    <ion-card *ngFor="let placeHistory of getHistoriesWithComment()">
       <ion-item>
         <ion-icon name="person-circle-outline" slot="start"></ion-icon>
-        <ion-label>علی</ion-label>
+        <ion-label>{{placeHistory._userName}}</ion-label>
         <ion-button fill="outline" slot="end" (click)="showUserScores()">...</ion-button>
       </ion-item>
       <ion-card-content>
-        خیلی عالی بود همه چیز رعایت شده بود
+        {{placeHistory.comment}}
       </ion-card-content>
     </ion-card>
-    <ion-card>
-      <ion-item>
-        <ion-icon name="person-circle-outline" slot="start"></ion-icon>
-        <ion-label>علی</ion-label>
-        <ion-button fill="outline" slot="end">...</ion-button>
-      </ion-item>
-      <ion-card-content>
-        خیلی عالی بود همه چیز رعایت شده بود
-      </ion-card-content>
-    </ion-card>
-
-
-
 
   </div>
 
-  <google-map *ngIf="segValue=='location'" height="100%" width="100%"></google-map>
-
-
+  <google-map *ngIf="segValue=='location'" height="100%" width="100%" [center]="center" >
+    <map-marker #marker [position]="markerPosition" [options]="markerOptions"></map-marker>
+  </google-map>
 
 </ion-content>
