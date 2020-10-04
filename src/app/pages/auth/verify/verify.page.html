@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>ورود</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="verify-logo">
+    <img src="assets/img/irisapp.png" alt="Ionic logo">
+  </div>
+
+  <form *ngIf="verifyForm" [formGroup]="verifyForm" (ngSubmit)="onVerify()" novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-label style="align-self: flex-start;" position="stacked" color="primary">کد</ion-label>
+        <ion-input formControlName="code" name="code" type="number" spellcheck="false" autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-text color="danger" *ngIf="verifyForm.controls.code.invalid && verifyForm.controls.code.touched">
+        <!-- <div class="ion-text-start"> -->
+        <p>
+          کد وارد شده معتبر نیست !
+        </p>
+        <!-- </div> -->
+      </ion-text>
+
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">ورود</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>

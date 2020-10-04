@@ -4,18 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AccountPageRoutingModule } from './account-routing.module';
+import { VerifyPageRoutingModule } from './verify-routing.module';
 
-import { AccountPage } from './account.page';
+import { VerifyPage } from './verify.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
     ReactiveFormsModule,
-    AccountPageRoutingModule
+    IonicModule,
+    VerifyPageRoutingModule
   ],
-  declarations: [AccountPage]
+  declarations: [VerifyPage]
 })
-export class AccountPageModule { }
+export class VerifyPageModule { }
